@@ -4,185 +4,1429 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ملف الأداء الوظيفي الإلكتروني للمعلمة</title>
-  <meta name="description" content="ملف أداء وظيفي إلكتروني لمعلمة رياض أطفال وفق عناصر تقييم الأداء الوظيفي للمعلمين، مع فواصل وشواهد وباركود QR للوحدات والخطط والتقارير." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body>
-  <div class="top-ribbon" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="الرئيسية">
-      <span class="brand-mark">🌸</span>
-      <span>
-        <strong>ملف الأداء الوظيفي</strong>
-        <small>معلمة رياض أطفال</small>
-      </span>
-    </a>
-    <nav class="main-nav" aria-label="التنقل الرئيسي">
-      <a href="#elements">العناصر</a>
-      <a href="#units">الوحدات</a>
-      <a href="#plans">الخطط العلاجية</a>
-      <a href="#reports">التقارير</a>
-      <a href="#initiatives">المبادرات</a>
-    </nav>
-    <div class="header-actions">
-      <button class="ghost-button" id="printBtn" type="button">طباعة / PDF</button>
-      <button class="ghost-button" id="themeBtn" type="button">🌙</button>
+  <style>
+    :root {
+      --bg: #fff9f4;
+      --card: #ffffff;
+      --text: #344054;
+      --muted: #667085;
+      --line: #eadfd6;
+      --pink: #ffd6e0;
+      --peach: #ffe1cc;
+      --mint: #d8f3dc;
+      --sky: #d7ecff;
+      --lilac: #eadcff;
+      --yellow: #fff1b8;
+      --rose: #ffe4ec;
+      --blue: #dceeff;
+      --shadow: 0 18px 45px rgba(71, 48, 32, 0.10);
+      --radius: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Tahoma", "Arial", sans-serif;
+      background:
+        radial-gradient(circle at top right, #ffe4ec 0, transparent 30%),
+        radial-gradient(circle at bottom left, #dceeff 0, transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    a {
+      color: #2970ff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 28px));
+      margin: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 249, 244, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--pink), var(--sky));
+      box-shadow: var(--shadow);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .nav a,
+    .btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 13px;
+      color: var(--text);
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, #ffd6e0, #d7ecff);
+      border: 0;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 56px 0 24px;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: "🌸";
+      position: absolute;
+      left: 24px;
+      top: 20px;
+      font-size: 54px;
+      opacity: 0.35;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 48px);
+      color: #2f2f42;
+    }
+
+    .lead {
+      max-width: 860px;
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .identity-grid,
+    .stats-grid,
+    .info-grid,
+    .elements-grid,
+    .units-grid,
+    .plans-grid,
+    .initiatives-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .identity-grid {
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      margin-top: 24px;
+    }
+
+    .identity-item,
+    .stat-card,
+    .info-card,
+    .section-card,
+    .element-card,
+    .unit-card,
+    .plan-card,
+    .initiative-card,
+    .report-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 12px 28px rgba(71, 48, 32, 0.07);
+    }
+
+    .identity-item small,
+    .stat-card small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .identity-item strong,
+    .stat-card strong {
+      font-size: 20px;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      margin: 22px 0;
+    }
+
+    section {
+      padding: 28px 0;
+      scroll-margin-top: 90px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #2f2f42;
+    }
+
+    .section-heading p {
+      margin: 4px 0 0;
+      color: var(--muted);
+    }
+
+    .search-box {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 20px;
+      padding: 14px 18px;
+      font-size: 16px;
+      outline: none;
+      margin: 12px 0 18px;
+    }
+
+    .info-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .info-card span {
+      font-size: 34px;
+    }
+
+    .info-card h3,
+    .element-card h3,
+    .unit-card h3,
+    .plan-card h3,
+    .initiative-card h3,
+    .report-card h3 {
+      margin: 8px 0;
+      color: #2f2f42;
+    }
+
+    .info-card p,
+    .element-card p,
+    .unit-card p,
+    .plan-card p,
+    .initiative-card p,
+    .report-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .elements-grid,
+    .units-grid,
+    .plans-grid,
+    .initiatives-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .number-badge {
+      min-width: 46px;
+      height: 46px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      background: #fff6e8;
+      border: 1px solid var(--line);
+    }
+
+    .color-peach { background: linear-gradient(180deg, #fff, #fff2e8); }
+    .color-mint { background: linear-gradient(180deg, #fff, #eefbf1); }
+    .color-lilac { background: linear-gradient(180deg, #fff, #f4eeff); }
+    .color-sky { background: linear-gradient(180deg, #fff, #eef7ff); }
+    .color-rose { background: linear-gradient(180deg, #fff, #fff0f5); }
+    .color-yellow { background: linear-gradient(180deg, #fff, #fff8db); }
+    .color-blue { background: linear-gradient(180deg, #fff, #edf6ff); }
+
+    .weight-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+
+    .weight-bar {
+      height: 10px;
+      border-radius: 999px;
+      background: #f2f4f7;
+      overflow: hidden;
+    }
+
+    .weight-bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ffd6e0, #bde0fe);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    h4 {
+      margin: 0 0 8px;
+      color: #3b3b4f;
+    }
+
+    ul {
+      margin: 0;
+      padding-right: 20px;
+      color: var(--muted);
+    }
+
+    .evidence-list,
+    .folder-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .evidence-chip,
+    .folder-card {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px dashed #d8cfc6;
+      border-radius: 18px;
+      padding: 12px;
+    }
+
+    .evidence-chip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .evidence-chip strong,
+    .evidence-chip span {
+      display: block;
+    }
+
+    .evidence-chip span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mini-link,
+    .disabled-link {
+      white-space: nowrap;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      background: #eef7ff;
+      color: #175cd3;
+      border: 1px solid #d1e9ff;
+    }
+
+    .disabled-link {
+      color: #667085;
+      background: #f9fafb;
+      border-color: #eaecf0;
+    }
+
+    .qr-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .qr-box {
+      width: 118px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .qr-box canvas {
+      width: 88px !important;
+      height: 88px !important;
+    }
+
+    .qr-box small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.3;
+      margin-top: 4px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      background: #fff6e8;
+      border: 1px solid var(--line);
+      color: #6b4f3c;
+    }
+
+    .unit-intro {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      background: linear-gradient(135deg, #fff, #f4eeff);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .folder-icon {
+      font-size: 28px;
+    }
+
+    .folder-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .report-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .copy-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: #eef7ff;
+      color: #175cd3;
+      cursor: pointer;
+    }
+
+    .footer {
+      padding: 28px 0 50px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero-card {
+        padding: 22px;
+      }
+
+      .unit-intro {
+        grid-template-columns: 1fr;
+      }
+
+      .evidence-chip {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media print {
+      .topbar,
+      .search-box,
+      .btn,
+      .copy-btn {
+        display: none !important;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .hero-card,
+      .element-card,
+      .unit-card,
+      .plan-card,
+      .initiative-card,
+      .report-card,
+      .info-card,
+      .identity-item,
+      .stat-card {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      section {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-icon">🌸</span>
+        <span>ملف الأداء الوظيفي الإلكتروني</span>
+      </div>
+
+      <nav class="nav">
+        <a href="#identity">الغلاف</a>
+        <a href="#vision">الرؤية</a>
+        <a href="#elements">العناصر</a>
+        <a href="#units">الوحدات</a>
+        <a href="#plans">الخطط العلاجية</a>
+        <a href="#initiatives">المبادرات</a>
+        <a href="#reports">التقارير</a>
+        <button class="btn btn-main" onclick="window.print()">طباعة / حفظ PDF</button>
+      </nav>
     </div>
   </header>
 
-  <main id="app">
-    <section class="hero section" id="home">
-      <div class="hero-card glass">
-        <div class="hero-copy">
-          <span class="eyebrow">وزارة التعليم · ملف إلكتروني منظم بالشواهد</span>
+  <main>
+    <section class="hero" id="identity">
+      <div class="container">
+        <div class="hero-card">
           <h1>ملف الأداء الوظيفي الإلكتروني للمعلمة</h1>
-          <p class="lead">تصميم لطيف بألوان فاتحة، مناسب لرياض الأطفال، ويعرض عناصر التقييم والشواهد والوحدات التعليمية والخطط العلاجية والتقارير مع QR لكل فاصل.</p>
+          <p class="lead">
+            تصميم إلكتروني منظم بألوان فاتحة مناسب لمعلمة رياض الأطفال، يعرض عناصر تقييم الأداء الوظيفي،
+            والشواهد، والوحدات التعليمية، والخطط العلاجية، والمبادرات، مع باركود QR لكل فاصل وشاهد.
+          </p>
+
           <div class="identity-grid" id="identityGrid"></div>
-          <div class="hero-actions">
-            <a class="primary-button" href="#elements">استعراض الفواصل</a>
-            <a class="secondary-button" href="#units">فتح باركود الوحدات</a>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <small>إجمالي الوزن</small>
+            <strong id="totalWeight">١٠٠%</strong>
+          </div>
+          <div class="stat-card">
+            <small>عناصر التقييم</small>
+            <strong id="sectionsCount">١١</strong>
+          </div>
+          <div class="stat-card">
+            <small>شواهد مقترحة</small>
+            <strong id="evidenceCount">٠</strong>
+          </div>
+          <div class="stat-card">
+            <small>وحدات تعليمية</small>
+            <strong id="unitCount">٠</strong>
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="sun"></div>
-          <div class="cloud cloud-one"></div>
-          <div class="cloud cloud-two"></div>
-          <div class="rainbow"><span></span><span></span><span></span><span></span></div>
-          <div class="kid-card">ألعب · أتعلم · أنمو</div>
-        </div>
       </div>
     </section>
 
-    <section class="section" id="ministry">
-      <div class="section-heading">
-        <span class="section-icon">🏫</span>
-        <div>
-          <h2>الرؤية والرسالة والأهداف</h2>
-          <p>قسم تمهيدي ثابت يمكن وضعه في بداية ملف الأداء الوظيفي.</p>
+    <section id="vision">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>الرؤية والرسالة والأهداف</h2>
+            <p>قسم تعريفي يمكن وضعه في بداية ملف الأداء الوظيفي.</p>
+          </div>
         </div>
+        <div class="info-grid" id="ministryGrid"></div>
       </div>
-      <div class="info-grid" id="ministryGrid"></div>
     </section>
 
-    <section class="section stats-section">
-      <div class="stat-card"><strong id="totalWeight">100%</strong><span>إجمالي الأوزان</span></div>
-      <div class="stat-card"><strong id="sectionsCount">11</strong><span>عنصر تقييم</span></div>
-      <div class="stat-card"><strong id="evidenceCount">0</strong><span>شاهد جاهز للتوثيق</span></div>
-      <div class="stat-card"><strong id="unitCount">0</strong><span>وحدة تعليمية</span></div>
+    <section id="elements">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>فواصل عناصر تقييم الأداء الوظيفي</h2>
+            <p>كل عنصر يحتوي الوزن النسبي، أمثلة تحقق العنصر، الشواهد المقترحة، وQR خاص.</p>
+          </div>
+        </div>
+
+        <input class="search-box" id="searchInput" type="search" placeholder="ابحثي داخل الملف: وحدة الماء، خطة علاجية، أولياء الأمور..." />
+
+        <div class="elements-grid" id="elementsGrid"></div>
+      </div>
     </section>
 
-    <section class="section" id="elements">
-      <div class="section-heading">
-        <span class="section-icon">📌</span>
-        <div>
-          <h2>فواصل عناصر تقييم الأداء الوظيفي</h2>
-          <p>كل عنصر يحتوي الوزن النسبي، أمثلة تحقق العنصر، الشواهد المقترحة، وبطاقات QR قابلة للطباعة.</p>
+    <section id="units">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>باركود الوحدات التعليمية</h2>
+            <p>فاصل رئيسي للوحدات، وكل وحدة تتفرع إلى ملفات للصور والمقاطع.</p>
+          </div>
         </div>
+
+        <div class="unit-intro" id="unitsIntro"></div>
+        <div class="units-grid" id="unitsGrid"></div>
       </div>
-      <div class="toolbar">
-        <label class="search-label" for="searchInput">بحث داخل الملف</label>
-        <input id="searchInput" type="search" placeholder="اكتبي: وحدة الماء، خطة علاجية، أولياء الأمور..." />
-      </div>
-      <div class="cards-grid" id="elementsGrid"></div>
     </section>
 
-    <section class="section special-section" id="units">
-      <div class="section-heading">
-        <span class="section-icon">🧩</span>
-        <div>
-          <h2>باركود الوحدات التعليمية</h2>
-          <p>افتحي باركود الوحدات؛ يظهر لك تفرع الوحدات، وكل وحدة تحتوي فواصل المقاطع والصور مثل اللقاء الصباحي والقراءة الجهرية واللعب الخارجي.</p>
+    <section id="plans">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>الخطط العلاجية والمتابعة الفردية</h2>
+            <p>قسم مخصص للأطفال المحتاجين إلى خطة علاجية، مع فصل مستقل لكل طفل.</p>
+          </div>
         </div>
+
+        <div class="plans-grid" id="plansGrid"></div>
       </div>
-      <div class="section-intro-card" id="unitsIntro"></div>
-      <div class="cards-grid" id="unitsGrid"></div>
     </section>
 
-    <section class="section" id="plans">
-      <div class="section-heading">
-        <span class="section-icon">🌱</span>
-        <div>
-          <h2>الخطط العلاجية والمتابعة الفردية</h2>
-          <p>قسم مخصص للأطفال المحتاجين إلى خطط علاجية، مع فصل مستقل لكل طفل وشواهد المتابعة.</p>
+    <section id="initiatives">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>المبادرات والفعاليات</h2>
+            <p>تقارير جاهزة قابلة للتعديل لليوم الوطني، يوم التأسيس، القراءة، الأنشطة الصحية، وغيرها.</p>
+          </div>
         </div>
+
+        <div class="initiatives-grid" id="initiativesGrid"></div>
       </div>
-      <div class="cards-grid" id="plansGrid"></div>
     </section>
 
-    <section class="section" id="initiatives">
-      <div class="section-heading">
-        <span class="section-icon">🎈</span>
-        <div>
-          <h2>المبادرات والفعاليات</h2>
-          <p>تقارير جاهزة قابلة للتعديل لليوم الوطني، يوم التأسيس، الأنشطة الصحية، مبادرات القراءة، وغيرها.</p>
+    <section id="reports">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>نماذج التقارير الجاهزة</h2>
+            <p>نصوص مختصرة بصياغة مهنية يمكن نسخها أو طباعتها وإرفاق الصور والمقاطع معها.</p>
+          </div>
         </div>
+
+        <div class="reports-list" id="reportsList"></div>
       </div>
-      <div class="cards-grid" id="initiativesGrid"></div>
     </section>
 
-    <section class="section" id="reports">
-      <div class="section-heading">
-        <span class="section-icon">📝</span>
-        <div>
-          <h2>نماذج التقارير الجاهزة</h2>
-          <p>نصوص تقارير مختصرة بصياغة مهنية، ويمكن نسخها أو طباعتها وإرفاق الصور والمقاطع معها.</p>
-        </div>
-      </div>
-      <div class="reports-list" id="reportsList"></div>
-    </section>
-
-    <section class="section" id="appendix">
-      <div class="section-heading">
-        <span class="section-icon">📂</span>
-        <div>
-          <h2>طريقة إضافة الصور والمقاطع</h2>
-          <p>هذا الموقع ثابت، لذلك الروابط توضع في ملف البيانات أو تُرفع الصور داخل مجلد assets/evidence.</p>
-        </div>
-      </div>
-      <div class="howto-card">
-        <ol>
-          <li>ارفعي الصور والمقاطع إلى Google Drive أو داخل مستودع GitHub.</li>
-          <li>افتحي ملف <code>assets/js/data.js</code> وعدلي قيمة <code>mediaUrl</code> للشاهد المطلوب.</li>
-          <li>بعد رفع الموقع على GitHub Pages، ستتولد أكواد QR تلقائياً لكل فاصل ولكل شاهد.</li>
-          <li>لا تكتبي أسماء الأطفال الحقيقية في النسخة العامة؛ استخدمي رموزاً مثل الطفل (أ) والطفل (ب).</li>
-        </ol>
-      </div>
-    </section>
-    <section class="section" id="sources">
-      <div class="section-heading">
-        <span class="section-icon">🔗</span>
-        <div>
+    <section id="sources">
+      <div class="container">
+        <div class="section-card">
           <h2>مصادر الاعتماد</h2>
-          <p>روابط رسمية يمكن الرجوع لها عند تعديل الرؤية والرسالة أو مراجعة آلية إدارة الأداء الوظيفي.</p>
+          <ul>
+            <li>وزارة التعليم: الرؤية والرسالة والأهداف.</li>
+            <li>الدليل المبسط لتقييم أداء شاغلي الوظائف التعليمية.</li>
+            <li>ملف أداء وظيفي إلكتروني بصياغة عربية RTL جاهز للرفع على GitHub Pages.</li>
+          </ul>
         </div>
       </div>
-      <div class="howto-card">
-        <ul>
-          <li><a href="https://www.moe.gov.sa/ar/aboutus/aboutministry/Pages/visionmissiongoals.aspx" target="_blank" rel="noopener">وزارة التعليم: الرؤية والرسالة والأهداف</a></li>
-          <li><a href="https://www.moe.gov.sa/ar/performance/Documents/Guide_to_Job_Performance_Management.pdf" target="_blank" rel="noopener">الدليل المبسط لتقييم أداء شاغلي الوظائف التعليمية</a></li>
-        </ul>
-      </div>
     </section>
-
   </main>
 
-  <footer class="site-footer">
-    <p>ملف أداء وظيفي إلكتروني · قابل للرفع على GitHub Pages · صُمم بصيغة RTL عربية</p>
+  <footer class="footer">
+    <div class="container">
+      تم إعداد الملف الإلكتروني ليكون قابلاً للتعديل والتطوير حسب شواهد المعلمة.
+    </div>
   </footer>
 
   <template id="qrTemplate">
     <div class="qr-box">
-      <canvas aria-label="رمز QR"></canvas>
+      <canvas></canvas>
       <small></small>
     </div>
   </template>
 
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/app.js"></script>
+
+  <script>
+    const PORTFOLIO = {
+      teacher: {
+        school: "اسم الروضة / المدرسة",
+        teacherName: "اسم المعلمة",
+        jobTitle: "معلمة رياض أطفال",
+        classroom: "المستوى / الشعبة",
+        year: "1447هـ",
+        city: "الإدارة التعليمية",
+        supervisor: "اسم المديرة / المقيمة"
+      },
+
+      ministry: [
+        {
+          title: "الرؤية",
+          icon: "✨",
+          text: "تعليم متميز لبناء مجتمع معرفي منافس عالمياً، مع تعزيز القيم وتنمية المهارات لدى المتعلمين."
+        },
+        {
+          title: "الرسالة",
+          icon: "🤍",
+          text: "تقديم تعليم نوعي في بيئة آمنة ومحفزة، يدعم نمو الطفل معرفياً ومهارياً ووجدانياً، ويعزز الشراكة بين الروضة والأسرة."
+        },
+        {
+          title: "أهمية ملف الأداء الوظيفي",
+          icon: "📍",
+          text: "يوثق الملف جهود المعلمة وممارساتها التعليمية والتربوية، ويربط بين عناصر التقييم والشواهد الداعمة، مما يسهل المتابعة والتحسين."
+        },
+        {
+          title: "أهداف الملف",
+          icon: "🌼",
+          text: "تنظيم الشواهد، إبراز الجهود، توثيق المبادرات، متابعة تقدم الأطفال، وتقديم صورة واضحة عن أداء المعلمة خلال العام الدراسي."
+        }
+      ],
+
+      elements: [
+        {
+          id: "duties",
+          number: 1,
+          title: "أداء الواجبات الوظيفية",
+          weight: 10,
+          color: "peach",
+          description: "الالتزام بواجبات المعلمة اليومية وتنفيذ المهام الأساسية وفق الجدول والخطة المعتمدة.",
+          examples: ["التقيد بالدوام الرسمي", "ناديّة الحصص وفق الجدول", "المشاركة في المناوبة والإشراف", "إعداد ومتابعة الدروس والواجبات والأنشطة"],
+          witnesses: ["سجل الدوام الرسمي", "سجل المناوبة والإشراف", "سجل الانتظار", "خطة توزيع المنهج"],
+          evidence: [
+            { title: "سجل الدوام والمناوبة", type: "سجل", mediaUrl: "", note: "يرفق السجل الرسمي أو صورة من التكليف." },
+            { title: "نماذج التحضير اليومي", type: "تقرير", mediaUrl: "", note: "توثيق تحضير اللقاء الصباحي والأنشطة." },
+            { title: "توثيق تنفيذ الأنشطة", type: "صور", mediaUrl: "", note: "صور مختارة من الأنشطة دون إظهار وجوه الأطفال." }
+          ]
+        },
+        {
+          id: "professional-community",
+          number: 2,
+          title: "التفاعل مع المجتمع المهني",
+          weight: 10,
+          color: "mint",
+          description: "المشاركة في مجتمعات التعلم المهنية وتبادل الخبرات مع الزميلات لتحسين الممارسات التعليمية.",
+          examples: ["المشاركة في مجتمعات التعلم المهنية", "تبادل الزيارات", "الدروس التطبيقية", "حضور الدورات والورش التدريبية"],
+          witnesses: ["سجل مجتمعات التعلم المهنية", "سجل تبادل الزيارات", "تقرير تنفيذ درس تطبيقي", "شهادات حضور"],
+          evidence: [
+            { title: "مجتمع تعلم مهني", type: "تقرير", mediaUrl: "", note: "تقرير اجتماع مهني حول التعلم باللعب." },
+            { title: "تبادل زيارة صفية", type: "نموذج", mediaUrl: "", note: "بطاقة ملاحظة وتغذية راجعة." },
+            { title: "شهادة دورة تدريبية", type: "شهادة", mediaUrl: "", note: "إرفاق شهادة حضور دورة أو ورشة." }
+          ]
+        },
+        {
+          id: "parents",
+          number: 3,
+          title: "التفاعل مع أولياء الأمور",
+          weight: 10,
+          color: "lilac",
+          description: "بناء علاقة إيجابية مع الأسرة لدعم تعلم الطفل ومتابعة نموه داخل الروضة وخارجها.",
+          examples: ["التواصل الفعال مع أولياء الأمور", "التنسيق مع الموجه الطلابي", "تزويد ولي الأمر بمستويات الطلاب", "تفعيل الخطة الأسبوعية"],
+          witnesses: ["صور من الجمعية العمومية", "تقرير اجتماع مع ولي الأمر", "نسخة من الخطة الأسبوعية", "رسائل تواصل"],
+          evidence: [
+            { title: "رسائل الخطة الأسبوعية", type: "صور", mediaUrl: "", note: "نماذج رسائل مرسلة للأسرة." },
+            { title: "تقرير اجتماع ولي أمر", type: "تقرير", mediaUrl: "", note: "نموذج مختصر لمحاور الاجتماع والتوصيات." },
+            { title: "استبانة رضا أولياء الأمور", type: "رابط", mediaUrl: "", note: "رابط استبانة أو ملخص نتائجها." }
+          ]
+        },
+        {
+          id: "strategies",
+          number: 4,
+          title: "التنوع في استراتيجيات التدريس",
+          weight: 10,
+          color: "sky",
+          description: "استخدام استراتيجيات تعليمية متنوعة تناسب خصائص أطفال الروضة والفروق الفردية بينهم.",
+          examples: ["استخدام استراتيجيات متنوعة", "مراعاة الفروق الفردية", "التعلم باللعب", "القراءة الجهرية والقصة"],
+          witnesses: ["تقرير تطبيق استراتيجية", "ملف إنجاز المعلمة", "صور من الأنشطة الصفية"],
+          evidence: [
+            { title: "استراتيجية التعلم باللعب", type: "تقرير", mediaUrl: "", note: "تقرير يوضح الهدف والخطوات والنتائج." },
+            { title: "استراتيجية القصة المصورة", type: "صور", mediaUrl: "", note: "توثيق القراءة الجهرية ومناقشة الأطفال." },
+            { title: "استراتيجية التجربة الحسية", type: "مقطع", mediaUrl: "", note: "مقطع قصير لتجربة مناسبة للوحدة." }
+          ]
+        },
+        {
+          id: "improving-results",
+          number: 5,
+          title: "تحسين نتائج المتعلمين",
+          weight: 10,
+          color: "rose",
+          description: "متابعة تقدم الأطفال ووضع خطط علاجية وإثرائية حسب مستوياتهم واحتياجاتهم.",
+          examples: ["معالجة الفاقد التعليمي", "وضع خطط علاجية للطلاب الضعاف", "وضع خطط إثرائية للطلاب المتميزين", "تكريم الطلاب المتحسنين"],
+          witnesses: ["نتائج الاختبار القبلي والبعدي", "كشوف متابعة الطلاب", "خطة علاجية", "شهادات تحفيزية"],
+          evidence: [
+            { title: "خطة علاجية للطفل (أ)", type: "خطة", mediaUrl: "#plan-child-a", note: "خطة متابعة فردية لمهارات اللغة والتواصل." },
+            { title: "خطة علاجية للطفل (ب)", type: "خطة", mediaUrl: "#plan-child-b", note: "خطة متابعة فردية لمهارات العد والإدراك." },
+            { title: "تكريم الأطفال المتحسنين", type: "صور", mediaUrl: "", note: "صور شهادات أو بطاقات تحفيزية." }
+          ]
+        },
+        {
+          id: "learning-plan",
+          number: 6,
+          title: "إعداد وتنفيذ خطة التعلم",
+          weight: 10,
+          color: "yellow",
+          description: "إعداد خطة التعلم وتنفيذها بما يحقق أهداف الوحدات التعليمية ويناسب المرحلة العمرية.",
+          examples: ["توزيع المنهج", "إعداد الدروس", "إعداد الواجبات والاختبارات", "تنفيذ البرنامج اليومي"],
+          witnesses: ["خطة توزيع المنهج", "نماذج من إعداد الدروس", "نماذج من الواجبات", "الاختبارات"],
+          evidence: [
+            { title: "باركود الوحدات التعليمية", type: "فاصل", mediaUrl: "#units", note: "يفتح قسم الوحدات التعليمية." },
+            { title: "خطة وحدة الماء", type: "خطة", mediaUrl: "#unit-water", note: "أنشطة أسبوعية لوحدة الماء." },
+            { title: "خطة وحدة الألوان", type: "خطة", mediaUrl: "#unit-colors", note: "أنشطة أسبوعية لوحدة الألوان." }
+          ]
+        },
+        {
+          id: "technology",
+          number: 7,
+          title: "توظيف تقنيات ووسائل التعليم المناسبة",
+          weight: 10,
+          color: "blue",
+          description: "استخدام الوسائل التعليمية والتقنية لدعم تعلم الأطفال بطريقة جذابة وآمنة.",
+          examples: ["دمج التقنية في التعليم", "تنويع الوسائل التعليمية", "استخدام العروض التفاعلية", "استخدام QR لتنظيم الشواهد"],
+          witnesses: ["صور من الوسائل التعليمية", "تقرير عن برنامج تقني", "روابط مقاطع تعليمية"],
+          evidence: [
+            { title: "أكواد QR للشواهد", type: "تقنية", mediaUrl: "#elements", note: "تنظيم الشواهد والوصول السريع لها." },
+            { title: "عرض تفاعلي للوحدة", type: "عرض", mediaUrl: "", note: "رابط عرض بوربوينت أو Canva." },
+            { title: "مقطع تعليمي قصير", type: "مقطع", mediaUrl: "", note: "مقطع مرتبط بمفهوم الوحدة." }
+          ]
+        },
+        {
+          id: "environment",
+          number: 8,
+          title: "تهيئة البيئة التعليمية",
+          weight: 5,
+          color: "mint",
+          description: "تنظيم البيئة الصفية بما يلبي حاجات الأطفال ويشجع التعلم والاستكشاف.",
+          examples: ["مراعاة حاجات الطلاب", "التهيئة النفسية", "التحفيز المادي والمعنوي", "توفير متطلبات الدرس"],
+          witnesses: ["تقرير تصنيف الطلاب حسب النمط", "التعلم", "نماذج من التحضير المادي والمعنوي"],
+          evidence: [
+            { title: "تهيئة ركن القراءة", type: "صور", mediaUrl: "", note: "صور الركن مع وصف الهدف." },
+            { title: "تهيئة ركن الفن", type: "صور", mediaUrl: "", note: "صور الخامات والأدوات." },
+            { title: "لوحات قواعد الصف", type: "صور", mediaUrl: "", note: "لوحات بسيطة تناسب الأطفال." }
+          ]
+        },
+        {
+          id: "class-management",
+          number: 9,
+          title: "الإدارة الصفية",
+          weight: 5,
+          color: "peach",
+          description: "إدارة الصف وتنظيم الانتقال بين الأنشطة وتعزيز السلوك الإيجابي لدى الأطفال.",
+          examples: ["ضبط سلوك الطلاب", "شد انتباههم", "متابعة الحضور والغياب", "تطبيق إدارة الصف"],
+          witnesses: ["كشف المتابعة", "تطبيق إدارة الصف", "سجل الحضور والغياب", "بطاقات التعزيز"],
+          evidence: [
+            { title: "بطاقات التعزيز اليومية", type: "صور", mediaUrl: "", note: "توثيق نظام التحفيز." },
+            { title: "سجل الحضور والغياب", type: "سجل", mediaUrl: "", note: "متابعة حضور الأطفال." },
+            { title: "قواعد الانتقال بين الأركان", type: "تقرير", mediaUrl: "", note: "آلية انتقال الأطفال بأمان." }
+          ]
+        },
+        {
+          id: "analysis",
+          number: 10,
+          title: "تحليل نتائج المتعلمين وتشخيص مستوياتهم",
+          weight: 10,
+          color: "lilac",
+          description: "تحليل مستويات الأطفال وتحديد جوانب القوة والاحتياج ووضع إجراءات تحسين مناسبة.",
+          examples: ["تحليل نتائج الاختبارات", "تصنيف الطلاب حسب النتائج", "معالجة الفاقد التعليمي", "تحديد نقاط القوة والضعف"],
+          witnesses: ["تقرير تحليل نتائج الطلاب", "سجل معالجة الفاقد التعليمي", "جداول متابعة المهارات"],
+          evidence: [
+            { title: "تحليل مهارات اللغة", type: "تقرير", mediaUrl: "", note: "تحليل مستوى الأطفال في التعبير والتمييز." },
+            { title: "تحليل مهارات العدد", type: "تقرير", mediaUrl: "", note: "تحليل مهارات العد والتصنيف." },
+            { title: "خطة تحسين بعد التحليل", type: "خطة", mediaUrl: "", note: "إجراءات علاجية وإثرائية." }
+          ]
+        },
+        {
+          id: "assessment",
+          number: 11,
+          title: "تنوع أساليب التقويم",
+          weight: 10,
+          color: "sky",
+          description: "استخدام أدوات تقويم متنوعة ومناسبة لعمر الطفل لقياس التقدم وتحسين التعلم.",
+          examples: ["تطبيق اختبارات ورقية وإلكترونية", "المشاريع الطلابية", "المهام الأدائية", "ملفات إنجاز الطلاب"],
+          witnesses: ["نماذج من الاختبارات", "ملفات إنجاز الطلاب", "نماذج من المهام الأدائية والمشاريع"],
+          evidence: [
+            { title: "بطاقة ملاحظة أداء الطفل", type: "نموذج", mediaUrl: "", note: "نموذج ملاحظة أثناء النشاط." },
+            { title: "ملف إنجاز الطفل", type: "ملف", mediaUrl: "", note: "عينات من أعمال الأطفال." },
+            { title: "تقويم ختامي للوحدة", type: "نموذج", mediaUrl: "", note: "تقويم بسيط بعد نهاية الوحدة." }
+          ]
+        }
+      ],
+
+      units: [
+        {
+          id: "water",
+          title: "وحدة الماء",
+          duration: "أسبوع واحد",
+          goal: "يتعرف الطفل على أهمية الماء ومصادره واستخداماته بأسلوب حسي وتفاعلي.",
+          color: "blue",
+          folders: [
+            { id: "morning", title: "اللقاء الصباحي / الحلقة", type: "صور", mediaUrl: "", description: "مناقشة الأطفال حول مصادر الماء واستخداماته." },
+            { id: "reading", title: "القراءة الجهرية", type: "مقطع", mediaUrl: "", description: "قصة قصيرة عن قطرة الماء مع أسئلة تفاعلية." },
+            { id: "academic", title: "النشاط الأكاديمي", type: "صور", mediaUrl: "", description: "تصنيف صور استخدامات الماء وتمييزها." },
+            { id: "outdoor", title: "اللعب الخارجي", type: "مقطع", mediaUrl: "", description: "نشاط حركي آمن مرتبط بمفهوم الماء." },
+            { id: "art", title: "الركن الفني", type: "صور", mediaUrl: "", description: "تلوين قطرة الماء أو عمل لوحة جماعية." },
+            { id: "closing", title: "الختام والتقويم", type: "نموذج", mediaUrl: "", description: "أسئلة ختامية وبطاقة تقويم بسيطة." }
+          ]
+        },
+        {
+          id: "colors",
+          title: "وحدة الألوان",
+          duration: "أسبوع واحد",
+          goal: "يميز الطفل الألوان الأساسية ويسميها ويصنف الأشياء حسب اللون.",
+          color: "rose",
+          folders: [
+            { id: "morning", title: "اللقاء الصباحي / الحلقة", type: "صور", mediaUrl: "", description: "عرض بطاقات الألوان وربطها بأشياء من بيئة الطفل." },
+            { id: "reading", title: "القراءة الجهرية", type: "مقطع", mediaUrl: "", description: "قصة ألوان قوس المطر." },
+            { id: "sorting", title: "التصنيف والمطابقة", type: "صور", mediaUrl: "", description: "فرز مكعبات أو بطاقات حسب اللون." },
+            { id: "art", title: "الركن الفني", type: "صور", mediaUrl: "", description: "مزج الألوان واكتشاف ألوان جديدة." },
+            { id: "game", title: "التعلم باللعب", type: "مقطع", mediaUrl: "", description: "لعبة ابحث عن اللون داخل الصف." },
+            { id: "closing", title: "الختام والتقويم", type: "نموذج", mediaUrl: "", description: "بطاقة تقويم: ألون، أصنف، وأسمي اللون." }
+          ]
+        },
+        {
+          id: "family",
+          title: "وحدة العائلة",
+          duration: "أسبوع واحد",
+          goal: "يعبر الطفل عن أفراد أسرته ودور كل فرد بأسلوب لغوي واجتماعي مناسب.",
+          color: "yellow",
+          folders: [
+            { id: "morning", title: "اللقاء الصباحي", type: "صور", mediaUrl: "", description: "حديث الأطفال عن الأسرة وأفرادها." },
+            { id: "reading", title: "القراءة الجهرية", type: "مقطع", mediaUrl: "", description: "قصة عن التعاون داخل الأسرة." },
+            { id: "roleplay", title: "اللعب التمثيلي", type: "صور", mediaUrl: "", description: "تمثيل أدوار الأسرة بطريقة تربوية." },
+            { id: "art", title: "الركن الفني", type: "صور", mediaUrl: "", description: "رسم شجرة العائلة أو بيت الأسرة." }
+          ]
+        }
+      ],
+
+      plans: [
+        {
+          id: "child-a",
+          title: "الخطة العلاجية للطفل (أ)",
+          focus: "تنمية مهارات اللغة والتواصل",
+          period: "أربعة أسابيع",
+          goals: ["أن يسمي الطفل ثلاث صور مألوفة عند عرضها عليه.", "أن يجيب عن سؤال بسيط بجملة قصيرة.", "أن يشارك في نشاط القراءة الجهرية مرة واحدة أسبوعياً."],
+          steps: ["استخدام بطاقات مصورة يومياً لمدة خمس دقائق.", "تقديم أسئلة قصيرة بعد القصة.", "تعزيز الطفل لفظياً عند المحاولة.", "إشراك ولي الأمر في تدريب منزلي بسيط."],
+          measures: ["بطاقة ملاحظة أسبوعية", "صور نشاط", "مقارنة قبلية وبعدية", "ملاحظات ولي الأمر"]
+        },
+        {
+          id: "child-b",
+          title: "الخطة العلاجية للطفل (ب)",
+          focus: "تنمية مهارات العد والتصنيف",
+          period: "أربعة أسابيع",
+          goals: ["أن يعد الطفل من 1 إلى 5 باستخدام المجسمات.", "أن يصنف الأشياء حسب اللون أو الحجم.", "أن يطابق العدد مع الكمية المناسبة."],
+          steps: ["استخدام مكعبات وعدّادات محسوسة.", "تنفيذ لعبة تصنيف أسبوعية.", "تقديم نشاط فردي قصير داخل الركن.", "متابعة تقدمه ببطاقة مهارية."],
+          measures: ["بطاقة متابعة مهارات", "صور نشاط", "تقييم قبلي وبعدي", "ملف إنجاز الطفل"]
+        }
+      ],
+
+      initiatives: [
+        {
+          id: "founding-day",
+          title: "تقرير فعالية يوم التأسيس",
+          element: "التفاعل مع أولياء الأمور / تهيئة البيئة التعليمية",
+          summary: "تم تنفيذ فعالية يوم التأسيس بهدف تعزيز الانتماء الوطني لدى الأطفال من خلال أنشطة مبسطة تناسب خصائص المرحلة العمرية، وتضمنت الفعالية أركاناً تعليمية وفنية وأناشيد وطنية ومشاركة رمزية من الأطفال.",
+          outputs: ["صور الفعالية", "ركن وطني", "مشاركة الأطفال", "تقرير مختصر"]
+        },
+        {
+          id: "reading",
+          title: "مبادرة أقرأ مع أمي",
+          element: "التفاعل مع أولياء الأمور / تحسين نتائج المتعلمين",
+          summary: "مبادرة تهدف إلى تعزيز حب القراءة لدى أطفال الروضة من خلال إشراك الأسرة في قراءة قصة قصيرة أسبوعياً، ثم مشاركة الطفل بما فهمه داخل الصف.",
+          outputs: ["رسائل لأولياء الأمور", "بطاقات قراءة", "صور مشاركة", "تحسن في التعبير"]
+        },
+        {
+          id: "healthy-food",
+          title: "مبادرة غذائي الصحي",
+          element: "تهيئة البيئة التعليمية / استراتيجيات التدريس",
+          summary: "مبادرة صفية لتعريف الأطفال بالغذاء الصحي من خلال التصنيف واللعب والأنشطة الحسية، مع توعية الأسرة بأهمية الوجبة الصحية.",
+          outputs: ["صور نشاط", "بطاقات تصنيف", "مشاركة أسرية", "تقرير مبادرة"]
+        },
+        {
+          id: "colors-week",
+          title: "أسبوع الألوان",
+          element: "إعداد وتنفيذ خطة التعلم / تنوع الاستراتيجيات",
+          summary: "تم تنفيذ أسبوع تعليمي حول الألوان باستخدام أنشطة متنوعة مثل المطابقة، التلوين، اللعب الحركي، والقراءة الجهرية، مما ساعد الأطفال على تسمية الألوان وتصنيفها.",
+          outputs: ["صور الركن الفني", "مقاطع قصيرة", "أعمال الأطفال", "بطاقات تقويم"]
+        }
+      ],
+
+      reports: [
+        {
+          id: "unit-report",
+          title: "نموذج تقرير تنفيذ وحدة تعليمية",
+          body: "تم تنفيذ وحدة تعليمية خلال أسبوع دراسي، واشتملت على مجموعة من الأنشطة المتنوعة مثل اللقاء الصباحي والقراءة الجهرية والنشاط الأكاديمي واللعب الخارجي والركن الفني. وقد أسهمت الأنشطة في تنمية مفاهيم الأطفال وتحقيق أهداف الوحدة، كما تم توثيق الشواهد بالصور والمقاطع المناسبة وإرفاقها ضمن ملف الأداء الوظيفي."
+        },
+        {
+          id: "remedial-report",
+          title: "نموذج تقرير خطة علاجية",
+          body: "تم إعداد خطة علاجية فردية للطفل بناءً على نتائج الملاحظة الصفية وتحليل مستوى الأداء. ركزت الخطة على تنمية المهارة المستهدفة من خلال أنشطة قصيرة ومتدرجة، مع متابعة أسبوعية وقياس قبلي وبعدي، وإشراك الأسرة بتوصيات منزلية بسيطة. أظهرت المتابعة تحسناً تدريجياً في استجابة الطفل ومشاركته داخل الصف."
+        },
+        {
+          id: "parents-report",
+          title: "نموذج تقرير تواصل مع أولياء الأمور",
+          body: "تم تفعيل التواصل مع أولياء الأمور من خلال إرسال الخطة الأسبوعية ومتابعة مستجدات الأطفال وتقديم الملاحظات التربوية عند الحاجة. وقد ساعد هذا التواصل في تعزيز الشراكة بين الروضة والأسرة ودعم تعلم الطفل داخل المنزل والروضة."
+        },
+        {
+          id: "initiative-report",
+          title: "نموذج تقرير مبادرة",
+          body: "تم تنفيذ مبادرة صفية هادفة بما يتناسب مع خصائص مرحلة رياض الأطفال، واشتملت المبادرة على أنشطة تفاعلية وفنية وتعليمية. هدفت المبادرة إلى تنمية مهارات الأطفال وتعزيز مشاركتهم، وتم توثيقها بالصور والنماذج والتقرير الختامي."
+        }
+      ]
+    };
+
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+    function arabicNumber(value) {
+      return String(value).replace(/[0-9]/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
+    }
+
+    function slugUrl(hash) {
+      const base = window.location.origin + window.location.pathname;
+      if (!hash) return base;
+      if (hash.startsWith("http")) return hash;
+      if (hash.startsWith("#")) return base + hash;
+      return base + "#" + hash;
+    }
+
+    function createQr(target, label) {
+      const template = $("#qrTemplate");
+      const node = template.content.cloneNode(true);
+      const box = $(".qr-box", node);
+      const canvas = $("canvas", node);
+      const small = $("small", node);
+      const url = slugUrl(target);
+
+      small.textContent = label || "QR";
+
+      if (window.QRCode && window.QRCode.toCanvas) {
+        window.QRCode.toCanvas(canvas, url, {
+          width: 110,
+          margin: 1,
+          color: {
+            dark: "#344054",
+            light: "#ffffff"
+          }
+        }).catch(() => fallbackQr(canvas, url));
+      } else {
+        fallbackQr(canvas, url);
+      }
+
+      return node;
+    }
+
+    function fallbackQr(canvas, url) {
+      const parent = canvas.parentElement;
+      canvas.remove();
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.className = "mini-link";
+      link.textContent = "فتح الرابط";
+      parent.prepend(link);
+    }
+
+    function pill(text) {
+      return `<span class="pill">${text}</span>`;
+    }
+
+    function makeActionLink(url, text = "فتح الشاهد") {
+      if (!url) return `<span class="disabled-link">بانتظار إضافة الرابط</span>`;
+      const target = url.startsWith("http") ? ` target="_blank" rel="noopener"` : "";
+      return `<a class="mini-link" href="${url}"${target}>${text}</a>`;
+    }
+
+    function renderIdentity() {
+      const identity = PORTFOLIO.teacher;
+
+      const items = [
+        ["اسم المعلمة", identity.teacherName],
+        ["المسمى", identity.jobTitle],
+        ["الروضة / المدرسة", identity.school],
+        ["المستوى / الشعبة", identity.classroom],
+        ["العام الدراسي", identity.year],
+        ["الإدارة التعليمية", identity.city],
+        ["المقيمة", identity.supervisor]
+      ];
+
+      $("#identityGrid").innerHTML = items.map(([label, value]) => `
+        <div class="identity-item">
+          <small>${label}</small>
+          <strong>${value}</strong>
+        </div>
+      `).join("");
+    }
+
+    function renderMinistry() {
+      $("#ministryGrid").innerHTML = PORTFOLIO.ministry.map(item => `
+        <article class="info-card">
+          <span>${item.icon}</span>
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        </article>
+      `).join("");
+    }
+
+    function renderElements() {
+      const grid = $("#elementsGrid");
+      grid.innerHTML = "";
+
+      PORTFOLIO.elements.forEach(element => {
+        const article = document.createElement("article");
+        article.className = `element-card color-${element.color}`;
+        article.id = `element-${element.id}`;
+        article.dataset.search = [
+          element.title,
+          element.description,
+          element.examples.join(" "),
+          element.witnesses.join(" "),
+          element.evidence.map(e => e.title).join(" ")
+        ].join(" ");
+
+        article.innerHTML = `
+          <div class="card-top">
+            <span class="number-badge">${arabicNumber(element.number)}</span>
+            <div>
+              <h3>${element.title}</h3>
+              <p>${element.description}</p>
+            </div>
+          </div>
+
+          <div class="weight-bar">
+            <span style="width:${element.weight * 10}%"></span>
+          </div>
+
+          <div class="weight-line">
+            <strong>${arabicNumber(element.weight)}%</strong>
+            <span>الوزن النسبي</span>
+          </div>
+
+          <div class="two-col">
+            <div>
+              <h4>أمثلة تحقق العنصر</h4>
+              <ul>${element.examples.map(item => `<li>${item}</li>`).join("")}</ul>
+            </div>
+            <div>
+              <h4>الشواهد المقترحة</h4>
+              <ul>${element.witnesses.map(item => `<li>${item}</li>`).join("")}</ul>
+            </div>
+          </div>
+
+          <div class="evidence-list">
+            ${element.evidence.map((item, index) => `
+              <div class="evidence-chip" id="evidence-${element.id}-${index + 1}">
+                <div>
+                  <strong>${item.title}</strong>
+                  <span>${item.type} · ${item.note}</span>
+                </div>
+                ${makeActionLink(item.mediaUrl, item.mediaUrl && item.mediaUrl.startsWith("#") ? "فتح القسم" : "فتح الشاهد")}
+              </div>
+            `).join("")}
+          </div>
+
+          <div class="qr-row"></div>
+        `;
+
+        const qrRow = $(".qr-row", article);
+        qrRow.append(createQr(`#element-${element.id}`, `QR ${element.title}`));
+
+        element.evidence.forEach((item, index) => {
+          const target = item.mediaUrl || `#evidence-${element.id}-${index + 1}`;
+          qrRow.append(createQr(target, item.title));
+        });
+
+        grid.append(article);
+      });
+    }
+
+    function renderUnits() {
+      const intro = $("#unitsIntro");
+
+      intro.innerHTML = `
+        <div>
+          <h3>فاصل رئيسي: الوحدات التعليمية</h3>
+          <p>
+            عند فتح باركود الوحدات تظهر الوحدات المنفذة، وكل وحدة تحتوي ملفات فرعية مثل:
+            اللقاء الصباحي، القراءة الجهرية، النشاط الأكاديمي، اللعب الخارجي، والركن الفني.
+          </p>
+          <div class="tag-row">
+            ${["وحدة الماء", "وحدة الألوان", "وحدة العائلة", "القراءة الجهرية", "اللعب الخارجي"].map(pill).join("")}
+          </div>
+        </div>
+        <div class="intro-qr"></div>
+      `;
+
+      $(".intro-qr", intro).append(createQr("#units", "QR الوحدات"));
+
+      const grid = $("#unitsGrid");
+      grid.innerHTML = "";
+
+      PORTFOLIO.units.forEach(unit => {
+        const article = document.createElement("article");
+        article.className = `unit-card color-${unit.color}`;
+        article.id = `unit-${unit.id}`;
+        article.dataset.search = [
+          unit.title,
+          unit.goal,
+          unit.folders.map(f => `${f.title} ${f.description}`).join(" ")
+        ].join(" ");
+
+        article.innerHTML = `
+          <div class="card-top">
+            <span class="number-badge">🧸</span>
+            <div>
+              <h3>${unit.title}</h3>
+              <p>${unit.duration} · ${unit.goal}</p>
+            </div>
+          </div>
+
+          <div class="folder-grid">
+            ${unit.folders.map(folder => `
+              <div class="folder-card" id="unit-${unit.id}-${folder.id}">
+                <div class="folder-icon">📁</div>
+                <h4>${folder.title}</h4>
+                <p>${folder.description}</p>
+                <div class="folder-meta">
+                  ${pill(folder.type)}
+                  ${makeActionLink(folder.mediaUrl, "فتح الوسائط")}
+                </div>
+                <div class="folder-qr"></div>
+              </div>
+            `).join("")}
+          </div>
+
+          <div class="qr-row unit-main-qr"></div>
+        `;
+
+        $(".unit-main-qr", article).append(createQr(`#unit-${unit.id}`, `QR ${unit.title}`));
+
+        unit.folders.forEach(folder => {
+          const folderNode = $(`#unit-${unit.id}-${folder.id}`, article);
+          const target = folder.mediaUrl || `#unit-${unit.id}-${folder.id}`;
+          $(".folder-qr", folderNode).append(createQr(target, folder.title));
+        });
+
+        grid.append(article);
+      });
+    }
+
+    function renderPlans() {
+      const grid = $("#plansGrid");
+      grid.innerHTML = "";
+
+      PORTFOLIO.plans.forEach(plan => {
+        const article = document.createElement("article");
+        article.className = "plan-card";
+        article.id = `plan-${plan.id}`;
+        article.dataset.search = [
+          plan.title,
+          plan.focus,
+          plan.goals.join(" "),
+          plan.steps.join(" "),
+          plan.measures.join(" ")
+        ].join(" ");
+
+        article.innerHTML = `
+          <div class="card-top">
+            <span class="number-badge">🌱</span>
+            <div>
+              <h3>${plan.title}</h3>
+              <p>${plan.focus} · ${plan.period}</p>
+            </div>
+          </div>
+
+          <div class="two-col">
+            <div>
+              <h4>الأهداف العلاجية</h4>
+              <ul>${plan.goals.map(item => `<li>${item}</li>`).join("")}</ul>
+            </div>
+            <div>
+              <h4>إجراءات التنفيذ</h4>
+              <ul>${plan.steps.map(item => `<li>${item}</li>`).join("")}</ul>
+            </div>
+          </div>
+
+          <h4>مؤشرات القياس</h4>
+          <div class="tag-row">${plan.measures.map(pill).join("")}</div>
+
+          <div class="qr-row"></div>
+        `;
+
+        $(".qr-row", article).append(createQr(`#plan-${plan.id}`, `QR ${plan.title}`));
+        grid.append(article);
+      });
+    }
+
+    function renderInitiatives() {
+      const grid = $("#initiativesGrid");
+      grid.innerHTML = "";
+
+      PORTFOLIO.initiatives.forEach(item => {
+        const article = document.createElement("article");
+        article.className = "initiative-card";
+        article.id = `initiative-${item.id}`;
+        article.dataset.search = [
+          item.title,
+          item.element,
+          item.summary,
+          item.outputs.join(" ")
+        ].join(" ");
+
+        article.innerHTML = `
+          <div class="card-top">
+            <span class="number-badge">🎈</span>
+            <div>
+              <h3>${item.title}</h3>
+              <p>${item.element}</p>
+            </div>
+          </div>
+
+          <p>${item.summary}</p>
+
+          <h4>المخرجات</h4>
+          <div class="tag-row">${item.outputs.map(pill).join("")}</div>
+
+          <div class="qr-row"></div>
+        `;
+
+        $(".qr-row", article).append(createQr(`#initiative-${item.id}`, `QR ${item.title}`));
+        grid.append(article);
+      });
+    }
+
+    function renderReports() {
+      const list = $("#reportsList");
+      list.innerHTML = "";
+
+      PORTFOLIO.reports.forEach(report => {
+        const article = document.createElement("article");
+        article.className = "report-card";
+        article.id = `report-${report.id}`;
+        article.dataset.search = `${report.title} ${report.body}`;
+
+        article.innerHTML = `
+          <div class="report-head">
+            <h3>${report.title}</h3>
+            <button class="copy-btn" type="button">نسخ النص</button>
+          </div>
+
+          <p>${report.body}</p>
+
+          <div class="qr-row"></div>
+        `;
+
+        $(".copy-btn", article).addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(`${report.title}\n\n${report.body}`);
+            $(".copy-btn", article).textContent = "تم النسخ ✓";
+
+            setTimeout(() => {
+              $(".copy-btn", article).textContent = "نسخ النص";
+            }, 1500);
+          } catch {
+            alert("يمكنك تحديد النص ونسخه يدوياً.");
+          }
+        });
+
+        $(".qr-row", article).append(createQr(`#report-${report.id}`, `QR ${report.title}`));
+        list.append(article);
+      });
+    }
+
+    function renderStats() {
+      const totalWeight = PORTFOLIO.elements.reduce((sum, item) => sum + item.weight, 0);
+
+      const evidenceCount =
+        PORTFOLIO.elements.reduce((sum, item) => sum + item.evidence.length, 0) +
+        PORTFOLIO.units.reduce((sum, unit) => sum + unit.folders.length, 0) +
+        PORTFOLIO.plans.length +
+        PORTFOLIO.initiatives.length;
+
+      $("#totalWeight").textContent = `${arabicNumber(totalWeight)}%`;
+      $("#sectionsCount").textContent = arabicNumber(PORTFOLIO.elements.length);
+      $("#evidenceCount").textContent = arabicNumber(evidenceCount);
+      $("#unitCount").textContent = arabicNumber(PORTFOLIO.units.length);
+    }
+
+    function setupSearch() {
+      const input = $("#searchInput");
+
+      input.addEventListener("input", () => {
+        const query = input.value.trim().toLowerCase();
+        const cards = $$("[data-search]");
+
+        cards.forEach(card => {
+          const matches = !query || card.dataset.search.toLowerCase().includes(query);
+          card.classList.toggle("is-hidden", !matches);
+        });
+      });
+    }
+
+    function init() {
+      renderIdentity();
+      renderMinistry();
+      renderElements();
+      renderUnits();
+      renderPlans();
+      renderInitiatives();
+      renderReports();
+      renderStats();
+      setupSearch();
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
 </body>
 </html>
