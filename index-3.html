@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ملف الأداء الوظيفي الإلكتروني للمعلمة</title>
+  <meta name="description" content="ملف أداء وظيفي إلكتروني لمعلمة رياض أطفال وفق عناصر تقييم الأداء الوظيفي للمعلمين، مع فواصل وشواهد وباركود QR للوحدات والخطط والتقارير." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="top-ribbon" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="الرئيسية">
+      <span class="brand-mark">🌸</span>
+      <span>
+        <strong>ملف الأداء الوظيفي</strong>
+        <small>معلمة رياض أطفال</small>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <a href="#elements">العناصر</a>
+      <a href="#units">الوحدات</a>
+      <a href="#plans">الخطط العلاجية</a>
+      <a href="#reports">التقارير</a>
+      <a href="#initiatives">المبادرات</a>
+    </nav>
+    <div class="header-actions">
+      <button class="ghost-button" id="printBtn" type="button">طباعة / PDF</button>
+      <button class="ghost-button" id="themeBtn" type="button">🌙</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <section class="hero section" id="home">
+      <div class="hero-card glass">
+        <div class="hero-copy">
+          <span class="eyebrow">وزارة التعليم · ملف إلكتروني منظم بالشواهد</span>
+          <h1>ملف الأداء الوظيفي الإلكتروني للمعلمة</h1>
+          <p class="lead">تصميم لطيف بألوان فاتحة، مناسب لرياض الأطفال، ويعرض عناصر التقييم والشواهد والوحدات التعليمية والخطط العلاجية والتقارير مع QR لكل فاصل.</p>
+          <div class="identity-grid" id="identityGrid"></div>
+          <div class="hero-actions">
+            <a class="primary-button" href="#elements">استعراض الفواصل</a>
+            <a class="secondary-button" href="#units">فتح باركود الوحدات</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="sun"></div>
+          <div class="cloud cloud-one"></div>
+          <div class="cloud cloud-two"></div>
+          <div class="rainbow"><span></span><span></span><span></span><span></span></div>
+          <div class="kid-card">ألعب · أتعلم · أنمو</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ministry">
+      <div class="section-heading">
+        <span class="section-icon">🏫</span>
+        <div>
+          <h2>الرؤية والرسالة والأهداف</h2>
+          <p>قسم تمهيدي ثابت يمكن وضعه في بداية ملف الأداء الوظيفي.</p>
+        </div>
+      </div>
+      <div class="info-grid" id="ministryGrid"></div>
+    </section>
+
+    <section class="section stats-section">
+      <div class="stat-card"><strong id="totalWeight">100%</strong><span>إجمالي الأوزان</span></div>
+      <div class="stat-card"><strong id="sectionsCount">11</strong><span>عنصر تقييم</span></div>
+      <div class="stat-card"><strong id="evidenceCount">0</strong><span>شاهد جاهز للتوثيق</span></div>
+      <div class="stat-card"><strong id="unitCount">0</strong><span>وحدة تعليمية</span></div>
+    </section>
+
+    <section class="section" id="elements">
+      <div class="section-heading">
+        <span class="section-icon">📌</span>
+        <div>
+          <h2>فواصل عناصر تقييم الأداء الوظيفي</h2>
+          <p>كل عنصر يحتوي الوزن النسبي، أمثلة تحقق العنصر، الشواهد المقترحة، وبطاقات QR قابلة للطباعة.</p>
+        </div>
+      </div>
+      <div class="toolbar">
+        <label class="search-label" for="searchInput">بحث داخل الملف</label>
+        <input id="searchInput" type="search" placeholder="اكتبي: وحدة الماء، خطة علاجية، أولياء الأمور..." />
+      </div>
+      <div class="cards-grid" id="elementsGrid"></div>
+    </section>
+
+    <section class="section special-section" id="units">
+      <div class="section-heading">
+        <span class="section-icon">🧩</span>
+        <div>
+          <h2>باركود الوحدات التعليمية</h2>
+          <p>افتحي باركود الوحدات؛ يظهر لك تفرع الوحدات، وكل وحدة تحتوي فواصل المقاطع والصور مثل اللقاء الصباحي والقراءة الجهرية واللعب الخارجي.</p>
+        </div>
+      </div>
+      <div class="section-intro-card" id="unitsIntro"></div>
+      <div class="cards-grid" id="unitsGrid"></div>
+    </section>
+
+    <section class="section" id="plans">
+      <div class="section-heading">
+        <span class="section-icon">🌱</span>
+        <div>
+          <h2>الخطط العلاجية والمتابعة الفردية</h2>
+          <p>قسم مخصص للأطفال المحتاجين إلى خطط علاجية، مع فصل مستقل لكل طفل وشواهد المتابعة.</p>
+        </div>
+      </div>
+      <div class="cards-grid" id="plansGrid"></div>
+    </section>
+
+    <section class="section" id="initiatives">
+      <div class="section-heading">
+        <span class="section-icon">🎈</span>
+        <div>
+          <h2>المبادرات والفعاليات</h2>
+          <p>تقارير جاهزة قابلة للتعديل لليوم الوطني، يوم التأسيس، الأنشطة الصحية، مبادرات القراءة، وغيرها.</p>
+        </div>
+      </div>
+      <div class="cards-grid" id="initiativesGrid"></div>
+    </section>
+
+    <section class="section" id="reports">
+      <div class="section-heading">
+        <span class="section-icon">📝</span>
+        <div>
+          <h2>نماذج التقارير الجاهزة</h2>
+          <p>نصوص تقارير مختصرة بصياغة مهنية، ويمكن نسخها أو طباعتها وإرفاق الصور والمقاطع معها.</p>
+        </div>
+      </div>
+      <div class="reports-list" id="reportsList"></div>
+    </section>
+
+    <section class="section" id="appendix">
+      <div class="section-heading">
+        <span class="section-icon">📂</span>
+        <div>
+          <h2>طريقة إضافة الصور والمقاطع</h2>
+          <p>هذا الموقع ثابت، لذلك الروابط توضع في ملف البيانات أو تُرفع الصور داخل مجلد assets/evidence.</p>
+        </div>
+      </div>
+      <div class="howto-card">
+        <ol>
+          <li>ارفعي الصور والمقاطع إلى Google Drive أو داخل مستودع GitHub.</li>
+          <li>افتحي ملف <code>assets/js/data.js</code> وعدلي قيمة <code>mediaUrl</code> للشاهد المطلوب.</li>
+          <li>بعد رفع الموقع على GitHub Pages، ستتولد أكواد QR تلقائياً لكل فاصل ولكل شاهد.</li>
+          <li>لا تكتبي أسماء الأطفال الحقيقية في النسخة العامة؛ استخدمي رموزاً مثل الطفل (أ) والطفل (ب).</li>
+        </ol>
+      </div>
+    </section>
+    <section class="section" id="sources">
+      <div class="section-heading">
+        <span class="section-icon">🔗</span>
+        <div>
+          <h2>مصادر الاعتماد</h2>
+          <p>روابط رسمية يمكن الرجوع لها عند تعديل الرؤية والرسالة أو مراجعة آلية إدارة الأداء الوظيفي.</p>
+        </div>
+      </div>
+      <div class="howto-card">
+        <ul>
+          <li><a href="https://www.moe.gov.sa/ar/aboutus/aboutministry/Pages/visionmissiongoals.aspx" target="_blank" rel="noopener">وزارة التعليم: الرؤية والرسالة والأهداف</a></li>
+          <li><a href="https://www.moe.gov.sa/ar/performance/Documents/Guide_to_Job_Performance_Management.pdf" target="_blank" rel="noopener">الدليل المبسط لتقييم أداء شاغلي الوظائف التعليمية</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>ملف أداء وظيفي إلكتروني · قابل للرفع على GitHub Pages · صُمم بصيغة RTL عربية</p>
+  </footer>
+
+  <template id="qrTemplate">
+    <div class="qr-box">
+      <canvas aria-label="رمز QR"></canvas>
+      <small></small>
+    </div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
